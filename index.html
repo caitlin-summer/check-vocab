@@ -297,7 +297,7 @@ code{background:var(--primary-50);color:var(--primary-600);padding:1px 6px;borde
         </div>
         <div><div class="logo">Vocab<span>Sheet</span></div><div class="subtitle">Tạo worksheet từ vựng tiếng Anh</div></div>
       </div>
-      <button class="btn btn-blue btn-lg" onclick="goCreate()">＋ <span class="hdr-new-label">Tạo bộ từ mới</span></button>
+      <button class="btn btn-blue btn-lg" onclick="goCreate()"><svg class='ic' aria-hidden='true' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 5v14M5 12h14'/></svg> <span class="hdr-new-label">Tạo bộ từ mới</span></button>
     </div>
   </header>
   <main><div id="home-content"></div></main>
@@ -313,7 +313,7 @@ code{background:var(--primary-50);color:var(--primary-600);padding:1px 6px;borde
         </div>
         <div><div class="logo">Vocab<span>Sheet</span></div><div class="subtitle" id="form-subtitle">Tạo bộ từ mới</div></div>
       </div>
-      <button class="btn-outline" onclick="goHome()">← Trang chủ</button>
+      <button class="btn-outline" onclick="goHome()"><svg class='ic' aria-hidden='true' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M19 12H5M12 19l-7-7 7-7'/></svg> Trang chủ</button>
     </div>
   </header>
   <main>
@@ -331,8 +331,8 @@ code{background:var(--primary-50);color:var(--primary-600);padding:1px 6px;borde
       <textarea id="input-words" rows="7" placeholder="Ví dụ nhập tiếng Anh:&#10;noon - buổi trưa&#10;morning - buổi sáng&#10;&#10;Hoặc nhập tiếng Việt:&#10;Bạn lau sàn khi nào?&#10;Mẹ bạn làm gì vào buổi tối?"></textarea>
       <div id="form-error" class="err" style="display:none"></div>
       <div class="flex" style="margin-top:14px">
-        <button class="btn btn-blue" onclick="addWords()">➕ Thêm từ</button>
-        <button class="btn btn-red" onclick="clearWords()">🗑 Xóa hết</button>
+        <button class="btn btn-blue" onclick="addWords()"><svg class='ic' aria-hidden='true' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 5v14M5 12h14'/></svg> Thêm từ</button>
+        <button class="btn btn-red" onclick="clearWords()"><svg class='ic' aria-hidden='true' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6M10 11v6M14 11v6'/></svg> Xóa hết</button>
       </div>
     </div>
     <div class="card" id="word-list-card" style="display:none">
@@ -340,21 +340,21 @@ code{background:var(--primary-50);color:var(--primary-600);padding:1px 6px;borde
       <div id="word-tags"></div>
       <div class="divider flex" style="justify-content:space-between;flex-wrap:wrap;gap:10px">
         <div class="flex">
-          <button class="btn btn-green btn-lg" id="save-btn" onclick="saveSet()">💾 Lưu bộ từ</button>
+          <button class="btn btn-green btn-lg" id="save-btn" onclick="saveSet()"><svg class='ic' aria-hidden='true' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2zM17 21v-8H7v8M7 3v5h8'/></svg> Lưu bộ từ</button>
           <button class="btn-outline" onclick="goHome()">Hủy</button>
         </div>
-        <button class="btn btn-violet" onclick="copyAllWords()" id="copy-btn">📋 Copy tất cả từ</button>
+        <button class="btn btn-violet" onclick="copyAllWords()" id="copy-btn"><svg class='ic' aria-hidden='true' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2M9 2h6v4H9z'/></svg> Copy tất cả từ</button>
       </div>
       <div id="copy-area-wrap" style="display:none;margin-top:14px">
         <div class="lbl">Toàn bộ từ vựng (có thể chọn &amp; copy)</div>
         <textarea id="copy-area" rows="8" readonly
           style="background:#f8fafc;color:#3730a3;cursor:text"
           onclick="this.select()"></textarea>
-        <div style="font-size:12px;color:var(--ink-2);margin-top:6px">💡 Click vào ô trên để chọn tất cả, rồi Ctrl+C để copy</div>
+        <div style="font-size:12px;color:var(--ink-2);margin-top:6px"><svg class='ic' aria-hidden='true' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.3h6c0-1 .4-1.8 1-2.3A7 7 0 0 0 12 2z'/></svg> Click vào ô trên để chọn tất cả, rồi Ctrl+C để copy</div>
       </div>
     </div>
     <div id="form-back" style="text-align:right;display:none;margin-top:4px">
-      <button class="btn-outline" onclick="goHome()">← Quay lại</button>
+      <button class="btn-outline" onclick="goHome()"><svg class='ic' aria-hidden='true' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M19 12H5M12 19l-7-7 7-7'/></svg> Quay lại</button>
     </div>
   </main>
 </div>
@@ -369,26 +369,26 @@ code{background:var(--primary-50);color:var(--primary-600);padding:1px 6px;borde
         </div>
         <div><div class="logo">Vocab<span>Sheet</span></div><div class="subtitle">Xuất worksheet PDF</div></div>
       </div>
-      <button class="btn-outline" onclick="goHome()">← Quay lại</button>
+      <button class="btn-outline" onclick="goHome()"><svg class='ic' aria-hidden='true' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M19 12H5M12 19l-7-7 7-7'/></svg> Quay lại</button>
     </div>
   </header>
   <main>
     <div class="card">
-      <div class="section-title">⚙️ Tùy chỉnh worksheet</div>
+      <div class="section-title"><svg class='ic' aria-hidden='true' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6'/></svg> Tùy chỉnh worksheet</div>
 
       <div class="lbl">Loại worksheet</div>
       <div class="mode-toggle">
-        <button class="mode-btn active" id="mode-btn-wm" onclick="setMode('wm')">🔤 Từ tiếng Anh → Học sinh điền nghĩa tiếng Việt</button>
-        <button class="mode-btn" id="mode-btn-mw" onclick="setMode('mw')">📖 Nghĩa tiếng Việt → Học sinh viết từ / câu tiếng Anh</button>
+        <button class="mode-btn active" id="mode-btn-wm" onclick="setMode('wm')"><svg class='ic' aria-hidden='true' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M4 7V4h16v3M9 20h6M12 4v16'/></svg> Từ tiếng Anh → Học sinh điền nghĩa tiếng Việt</button>
+        <button class="mode-btn" id="mode-btn-mw" onclick="setMode('mw')"><svg class='ic' aria-hidden='true' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2zM22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z'/></svg> Nghĩa tiếng Việt → Học sinh viết từ / câu tiếng Anh</button>
       </div>
       <div id="mode-warning" class="err" style="display:none;background:var(--amber-50);color:#92400e;border-color:#fde68a"></div>
 
       <div class="shuffle-box">
         <label>
           <input type="checkbox" id="shuffle-toggle" onchange="shuffleChanged()">
-          🔀 Trộn thứ tự từ ngẫu nhiên
+          <span style="display:inline-flex;align-items:center;gap:7px"><svg class='ic' aria-hidden='true' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5'/></svg> Trộn thứ tự từ ngẫu nhiên</span> từ ngẫu nhiên
         </label>
-        <button class="btn btn-violet" style="padding:7px 13px;font-size:12px" id="reshuffle-btn" onclick="reshuffleWords()" title="Trộn lại">↺ Trộn lại</button>
+        <button class="btn btn-violet" style="padding:7px 13px;font-size:12px" id="reshuffle-btn" onclick="reshuffleWords()" title="Trộn lại"><svg class='ic' aria-hidden='true' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M3 12a9 9 0 1 0 3-6.7L3 8M3 3v5h5'/></svg> Trộn lại</button>
       </div>
 
       <div class="grid3" style="margin-top:16px">
@@ -398,7 +398,7 @@ code{background:var(--primary-50);color:var(--primary-600);padding:1px 6px;borde
       </div>
 
       <div class="col-box">
-        <div class="col-box-title">🏷️ Tên cột trong worksheet</div>
+        <div class="col-box-title"><svg class='ic' aria-hidden='true' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M20.6 13.4l-7.2 7.2a2 2 0 0 1-2.8 0L2 12V2h10l8.6 8.6a2 2 0 0 1 0 2.8zM7 7h.01'/></svg> Tên cột trong worksheet</div>
         <div class="grid2">
           <div>
             <div class="lbl">Cột A — nội dung cho sẵn</div>
@@ -412,7 +412,7 @@ code{background:var(--primary-50);color:var(--primary-600);padding:1px 6px;borde
       </div>
 
       <div class="divider flex">
-        <button class="btn btn-green btn-lg" onclick="downloadPDF()" id="dl-btn">⬇️ Tải PDF</button>
+        <button class="btn btn-green btn-lg" onclick="downloadPDF()" id="dl-btn"><svg class='ic' aria-hidden='true' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3'/></svg> Tải PDF</button>
         <button class="btn-outline" onclick="goHome()">Quay lại</button>
       </div>
     </div>
@@ -555,9 +555,9 @@ function renderWordTags() {
           placeholder="Cột B — bản dịch (tùy chọn)">
       </td>
       <td class="wactions">
-        <button class="wbtn wbtn-up" onclick="moveWord(${i},-1)" title="Lên" ${i===0?"disabled":""}>↑</button>
-        <button class="wbtn wbtn-dn" onclick="moveWord(${i},1)" title="Xuống" ${i===currentWords.length-1?"disabled":""}>↓</button>
-        <button class="wbtn wbtn-del" onclick="removeWord(${i})" title="Xóa">✕</button>
+        <button class="wbtn wbtn-up" onclick="moveWord(${i},-1)" title="Lên" ${i===0?"disabled":""}><svg class='ic' aria-hidden='true' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 19V5M5 12l7-7 7 7'/></svg></button>
+        <button class="wbtn wbtn-dn" onclick="moveWord(${i},1)" title="Xuống" ${i===currentWords.length-1?"disabled":""}><svg class='ic' aria-hidden='true' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 5v14M19 12l-7 7-7-7'/></svg></button>
+        <button class="wbtn wbtn-del" onclick="removeWord(${i})" title="Xóa"><svg class='ic' aria-hidden='true' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M18 6 6 18M6 6l12 12'/></svg></button>
       </td>
     </tr>`).join("");
 
@@ -603,11 +603,11 @@ function copyAllWords() {
   // Try clipboard API
   if (navigator.clipboard) {
     navigator.clipboard.writeText(text).then(() => {
-      btn.textContent = "✅ Đã copy!";
-      setTimeout(() => { btn.textContent = "📋 Copy tất cả từ"; }, 2000);
+      btn.innerHTML = `<svg class='ic' aria-hidden='true' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M20 6 9 17l-5-5'/></svg> Đã copy!`;
+      setTimeout(() => { btn.innerHTML = `<svg class='ic' aria-hidden='true' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2M9 2h6v4H9z'/></svg> Copy tất cả từ`; }, 2000);
     }).catch(() => {});
   } else {
-    try { document.execCommand("copy"); btn.textContent = "✅ Đã copy!"; setTimeout(() => { btn.textContent = "📋 Copy tất cả từ"; }, 2000); } catch {}
+    try { document.execCommand("copy"); btn.innerHTML = `<svg class='ic' aria-hidden='true' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M20 6 9 17l-5-5'/></svg> Đã copy!`; setTimeout(() => { btn.innerHTML = `<svg class='ic' aria-hidden='true' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2M9 2h6v4H9z'/></svg> Copy tất cả từ`; }, 2000); } catch {}
   }
 }
 
@@ -623,7 +623,7 @@ function goCreate() {
   document.getElementById("input-name").value = "";
   document.getElementById("input-words").value = "";
   document.getElementById("form-subtitle").textContent = "Tạo bộ từ mới";
-  document.getElementById("save-btn").textContent = "💾 Lưu bộ từ";
+  document.getElementById("save-btn").innerHTML = `<svg class='ic' aria-hidden='true' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2zM17 21v-8H7v8M7 3v5h8'/></svg> Lưu bộ từ`;
   showErr(""); renderWordTags(); showView("view-form");
 }
 
@@ -634,7 +634,7 @@ function goEdit(id) {
   document.getElementById("input-name").value = s.name;
   document.getElementById("input-words").value = "";
   document.getElementById("form-subtitle").textContent = `Chỉnh sửa: ${s.name}`;
-  document.getElementById("save-btn").textContent = "💾 Lưu thay đổi";
+  document.getElementById("save-btn").innerHTML = `<svg class='ic' aria-hidden='true' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2zM17 21v-8H7v8M7 3v5h8'/></svg> Lưu thay đổi`;
   showErr(""); renderWordTags(); showView("view-form");
 }
 
@@ -697,10 +697,10 @@ function renderHome() {
   const el = document.getElementById("home-content");
   if (sets.length === 0) {
     el.innerHTML = `<div class="card empty-state">
-      <div class="empty-ico">📚</div>
+      <div class="empty-ico"><svg class='ic ic-lg' aria-hidden='true' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M4 19.5A2.5 2.5 0 0 1 6.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z'/></svg></div>
       <div style="font-size:20px;font-weight:700;margin-bottom:6px">Chưa có bộ từ nào</div>
       <div style="color:var(--ink-2);margin-bottom:22px;font-size:14px">Bắt đầu bằng cách tạo bộ từ đầu tiên của bạn!</div>
-      <button class="btn btn-blue btn-lg" onclick="goCreate()">＋ Tạo bộ từ đầu tiên</button></div>`; return;
+      <button class="btn btn-blue btn-lg" onclick="goCreate()"><svg class='ic' aria-hidden='true' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 5v14M5 12h14'/></svg> Tạo bộ từ đầu tiên</button></div>`; return;
   }
   el.innerHTML = `<div class="home-top">
       <div><div class="home-title">Bộ từ của bạn</div><div class="home-count">${sets.length} bộ từ đã lưu</div></div>
@@ -714,16 +714,16 @@ function renderHome() {
         <div class="set-info">
           <div class="set-name">${escHtml(s.name)}</div>
           <div class="set-meta">
-            <span class="pill">📅 ${fmtDate(s.createdAt)}</span>
-            <span class="pill">📝 ${s.words.length} từ</span>
-            ${hasMeaning?'<span class="pill ok">✓ có nghĩa TV</span>':''}
+            <span class="pill"><svg class='ic' aria-hidden='true' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M3 6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM16 2v4M8 2v4M3 10h18'/></svg> ${fmtDate(s.createdAt)}</span>
+            <span class="pill"><svg class='ic' aria-hidden='true' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M8 13h8M8 17h5'/></svg> ${s.words.length} từ</span>
+            ${hasMeaning?`<span class="pill ok"><svg class='ic' aria-hidden='true' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M20 6 9 17l-5-5'/></svg> có nghĩa TV</span>`:''}
           </div>
           <div class="chips">${chips}${more}</div>
         </div>
         <div class="set-actions">
-          <button class="btn btn-blue" onclick="goPrint('${s.id}')">📄 Xuất PDF</button>
-          <button class="btn btn-amber" onclick="goEdit('${s.id}')">✏️ Sửa</button>
-          <button class="btn btn-red" onclick="deleteSet('${s.id}')" title="Xóa">🗑</button>
+          <button class="btn btn-blue" onclick="goPrint('${s.id}')"><svg class='ic' aria-hidden='true' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M8 13h8M8 17h5'/></svg> Xuất PDF</button>
+          <button class="btn btn-amber" onclick="goEdit('${s.id}')"><svg class='ic' aria-hidden='true' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z'/></svg> Sửa</button>
+          <button class="btn btn-red" onclick="deleteSet('${s.id}')" title="Xóa"><svg class='ic' aria-hidden='true' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6M10 11v6M14 11v6'/></svg></button>
         </div>
       </div>`;
     }).join("");
@@ -858,6 +858,76 @@ async function downloadPDF() {
 }
 
 renderHome();
+</script>
+<style id="upgrade-v2">
+:root{--ink-3:#64748b;--ring:#4338ca}
+.ic{width:1.15em;height:1.15em;flex:none;vertical-align:-.2em}.ic-lg{width:34px;height:34px;color:var(--primary)}
+.mode-btn .ic{margin-right:6px}.section-title .ic,.col-box-title .ic{color:var(--primary)}
+/* focus rõ cho mọi nút (bàn phím) */
+.btn:focus-visible,.btn-outline:focus-visible,.mode-btn:focus-visible,.wbtn:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--ring);outline-offset:2px}
+.btn:active{transform:scale(.98)}
+/* header gọn hơn */
+.hdr-inner{padding:10px 20px}
+.brand-mark{width:38px;height:38px;border-radius:11px}
+/* thẻ bộ từ */
+.set-card:focus-within{border-color:var(--primary);box-shadow:var(--shadow-md)}
+.set-name{font-size:16.5px}
+.pill{background:#eef1f7;color:#334155}
+.chip-more{color:var(--ink-2)}
+/* bảng từ: input dễ thấy khung hơn */
+.winput{background:#fff;border-color:var(--line)}
+.winput:hover{border-color:var(--line-2);background:#fff}
+.wnum{color:var(--ink-2)}
+.wbtn{width:32px;height:32px}
+/* nút Lưu luôn thấy khi danh sách từ dài */
+#word-list-card .divider{position:sticky;bottom:0;margin:18px -24px -24px;padding:12px 24px;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-top:1px solid var(--line);border-radius:0 0 var(--radius) var(--radius);z-index:5}
+#word-list-card .divider.flex{margin-top:18px}
+.kbd-hint{font-size:12px;color:var(--ink-2);margin-left:4px}
+.kbd-hint kbd{font:inherit;font-size:11px;background:#eef1f7;border:1px solid var(--line-2);border-radius:5px;padding:1px 6px}
+/* trang xuất PDF: cài đặt bên trái, xem trước bên phải */
+@media (min-width:1040px){
+  #view-print main{max-width:1240px;display:grid;grid-template-columns:400px minmax(0,1fr);gap:24px;align-items:start}
+  #view-print main>.card{position:sticky;top:84px;margin-bottom:0;max-height:calc(100vh - 100px);overflow:auto}
+  #view-print .grid2,#view-print .grid3{grid-template-columns:1fr}
+  #view-print .preview-wrap{margin-top:0}
+}
+.mode-btn{min-height:54px;display:flex;align-items:center;justify-content:center}
+.mode-btn.active{box-shadow:0 0 0 2px var(--primary) inset,0 2px 8px rgba(79,70,229,.18)}
+/* điện thoại: nút Tải PDF cố định ở đáy */
+@media (max-width:1039px){
+  #view-print .card .divider{position:fixed;left:0;right:0;bottom:0;margin:0;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-top:1px solid var(--line);z-index:40;flex-wrap:nowrap}
+  #view-print .card .divider .btn,#view-print .card .divider .btn-outline{flex:1;justify-content:center}
+  #view-print main{padding-bottom:96px}
+}
+/* vùng chạm 44px trên cảm ứng */
+@media (pointer:coarse){
+  .btn,.btn-outline{min-height:44px}.wbtn{width:40px;height:40px}
+  input[type=text],select{min-height:44px}
+  .shuffle-box input[type=checkbox]{width:22px;height:22px}
+}
+@media (max-width:680px){.subtitle{display:none}#word-list-card .divider{margin:18px -16px -18px;padding:12px 16px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+<script>
+(function(){
+  /* 1. nút chỉ có icon/emoji → thêm nhãn cho trình đọc màn hình */
+  function label(root){
+    (root||document).querySelectorAll('button[title]:not([aria-label])').forEach(function(b){b.setAttribute('aria-label',b.getAttribute('title'));});
+  }
+  label();
+  new MutationObserver(function(){label();}).observe(document.body,{childList:true,subtree:true});
+  /* 2. phím tắt: Ctrl/⌘+Enter trong ô nhập từ = Thêm từ; Enter ở ô tên = xuống ô từ */
+  var ta=document.getElementById('input-words'),nm=document.getElementById('input-name');
+  if(ta){
+    ta.addEventListener('keydown',function(e){if(e.key==='Enter'&&(e.ctrlKey||e.metaKey)){e.preventDefault();addWords();}});
+    var row=ta.parentNode.querySelector('.flex');
+    if(row){var h=document.createElement('span');h.className='kbd-hint';h.innerHTML='hoặc nhấn <kbd>Ctrl</kbd>+<kbd>Enter</kbd>';row.appendChild(h);}
+  }
+  if(nm)nm.addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.isComposing){e.preventDefault();ta&&ta.focus();}});
+  /* 3. tự điền ngày hôm nay khi mở trang xuất PDF (nếu ô ngày trống) */
+  var og=window.goPrint;
+  if(typeof og==='function'){window.goPrint=function(id){og(id);var d=document.getElementById('pi-date');if(d&&!d.value){var t=new Date(),p=function(n){return String(n).padStart(2,'0');};d.value=p(t.getDate())+'/'+p(t.getMonth()+1)+'/'+t.getFullYear();window.updatePreview&&updatePreview();}};}
+})();
 </script>
 </body>
 </html>
