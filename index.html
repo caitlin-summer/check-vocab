@@ -215,11 +215,12 @@ code{background:var(--primary-50);color:var(--primary-600);padding:1px 6px;borde
 .loading-txt{font-size:14px;color:var(--primary-600);font-weight:600}
 
 /* ═══ WORKSHEET RENDER (html2canvas) — in A4 đen trắng ═══ */
-#ws-render{position:absolute;left:-9999px;top:0;width:794px;height:1123px;background:#fff;padding:36px 44px 32px;font-family:'Lexend',sans-serif;color:#000;display:flex;flex-direction:column;overflow:hidden}
-.ws-heading{text-align:center;border-bottom:2px solid #000;padding-bottom:10px;margin-bottom:14px;flex-shrink:0}
+#ws-render{position:absolute;left:-9999px;top:0}
+#ws-render,.ws-page{width:794px;height:1123px;background:#fff;padding:28px 44px 24px;font-family:'Lexend',sans-serif;color:#000;display:flex;flex-direction:column;overflow:hidden}
+.ws-heading{text-align:center;border-bottom:2px solid #000;padding-bottom:8px;margin-bottom:10px;flex-shrink:0}
 .ws-label-sm{font-size:10px;letter-spacing:3.5px;text-transform:uppercase;color:#222;margin-bottom:6px}
 .ws-title-text{font-size:25px;font-weight:700;line-height:1.2}
-.ws-inforow{display:flex;gap:20px;margin-bottom:14px;flex-shrink:0}
+.ws-inforow{display:flex;gap:20px;margin-bottom:10px;flex-shrink:0}
 .ws-infoitem{flex:1;display:flex;align-items:flex-end;gap:6px;font-size:13px;font-weight:600}
 .ws-underline{flex:1;border-bottom:1.5px solid #000;height:20px;line-height:18px;padding:0 4px;white-space:nowrap;overflow:hidden}
 .ws-mini{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;border-bottom:2px solid #000;padding-bottom:8px;margin-bottom:12px;font-size:13px;font-weight:600;flex-shrink:0}
@@ -231,9 +232,9 @@ code{background:var(--primary-50);color:var(--primary-600);padding:1px 6px;borde
 .ws-tbl td{border:1px solid #555;padding:0}
 .ws-tbl td.num-cell{text-align:center;font-size:13px;font-weight:600;vertical-align:middle}
 .ws-tbl td.word-cell{text-align:center;font-weight:700;font-size:16px;line-height:1.3;padding:6px 12px;vertical-align:middle}
-.ws-tbl td.blank-cell{vertical-align:bottom}
-.wl{display:flex;flex-direction:column;margin:0 10px 10px}
-.wl i{flex:1;border-bottom:1px solid #777}
+.ws-tbl td.blank-cell{vertical-align:middle}
+.wl{display:flex;flex-direction:column;justify-content:space-evenly;margin:0 10px}
+.wl i{display:block;height:0;border-bottom:1px solid #777}
 .ws-footer-row{flex-shrink:0;margin-top:10px;border-top:1px solid #000;padding-top:8px;display:flex;justify-content:flex-end;font-size:11px;color:#222}
 
 /* ───── UI Preview (giấy A4) ───── */
@@ -416,27 +417,8 @@ code{background:var(--primary-50);color:var(--primary-600);padding:1px 6px;borde
 
     <!-- UI Preview -->
     <div class="preview-wrap">
-      <div class="preview-note">Xem trước</div>
-      <div class="preview-box">
-        <div class="ui-ws-heading">
-          <div class="ui-ws-label">English Vocabulary Worksheet</div>
-          <div class="ui-ws-title" id="prev-title">—</div>
-        </div>
-        <div class="ui-inforow">
-          <div><strong>Name:</strong> <span class="ui-uline">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
-          <div><strong>Class:</strong> <span class="ui-uline" id="prev-class">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
-          <div><strong>Date:</strong> <span class="ui-uline" id="prev-date">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
-        </div>
-        <div class="ui-dirs" id="prev-dirs">Directions: Write the Vietnamese meaning of each vocabulary word in the blank column.</div>
-        <table class="ui-tbl">
-          <thead><tr id="prev-thead"></tr></thead>
-          <tbody id="prev-tbody"></tbody>
-        </table>
-        <div class="ui-footer">
-          <span id="prev-total">Total: 0 words</span>
-          <span id="prev-score">Score: _______ / 0</span>
-        </div>
-      </div>
+      <div class="preview-note" id="pv-note">Xem trước</div>
+      <div id="pv-pages"></div>
     </div>
   </main>
 </div>
@@ -726,37 +708,25 @@ function renderHome() {
     }).join("");
 }
 
-// ─── PREVIEW ───
+// ─── PREVIEW (dùng đúng bộ dựng trang của PDF) ───
 function updatePreview() {
   if (!activeSet) return;
-  const title = document.getElementById("pi-title").value || activeSet.name;
-  const cls   = document.getElementById("pi-class").value;
-  const date  = document.getElementById("pi-date").value;
-  document.getElementById("prev-title").textContent = title;
-  document.getElementById("prev-class").innerHTML = cls || "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-  document.getElementById("prev-date").innerHTML  = date || "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-
-  const isWM = wsMode === "wm";
-  document.getElementById("prev-dirs").style.display = "none";
-
-  const colA = document.getElementById("pi-col-a").value.trim() || "Từ vựng / Câu";
-  const colB = document.getElementById("pi-col-b").value.trim() || "Dịch";
-
-  document.getElementById("prev-thead").innerHTML =
-    `<th style="width:36px;text-align:center">STT</th><th style="width:42%;text-align:center">${colA}</th><th>${colB}</th>`;
-
-  const displayWords = getDisplayWords();
-  document.getElementById("prev-tbody").innerHTML = displayWords.map((w, i) => {
-    const word = typeof w==="string"?w:w.word;
-    const meaning = typeof w==="object"?w.meaning:"";
-    return isWM
-      ? `<tr><td class="ui-num">${i+1}</td><td class="ui-word">${word}</td><td class="ui-blank"></td></tr>`
-      : `<tr><td class="ui-num">${i+1}</td><td class="ui-word" style="font-weight:600">${meaning||'—'}</td><td class="ui-blank"></td></tr>`;
-  }).join("");
-
-  document.getElementById("prev-total").textContent = `PDF ${buildPages().length} trang`;
-  document.getElementById("prev-score").textContent = `Score: _______ / ${activeSet.words.length}`;
+  const pages = buildPages();
+  document.getElementById("pv-note").textContent = `Xem trước · ${pages.length} trang A4`;
+  document.getElementById("pv-pages").innerHTML = pages.map(p => `<div class="pv-sheet"><div class="ws-page">${p}</div></div>`).join("");
+  fitPreview();
 }
+function fitPreview() {
+  const box = document.getElementById("pv-pages"), w = box.clientWidth;
+  if (!w) return;
+  const k = Math.min(1, w / 794);
+  box.querySelectorAll(".pv-sheet").forEach(sh => {
+    sh.style.width = 794 * k + "px"; sh.style.height = 1123 * k + "px";
+    sh.firstElementChild.style.transform = `scale(${k})`;
+  });
+}
+let pvRaf = 0;
+new ResizeObserver(() => { cancelAnimationFrame(pvRaf); pvRaf = requestAnimationFrame(fitPreview); }).observe(document.getElementById("pv-pages"));
 
 // ─── BUILD RENDER (nhiều trang, đen trắng) ───
 const PAGE_H = 1123, MIN_ROW = 60, MAX_ROW = 104;
@@ -768,25 +738,31 @@ function buildPages() {
   const words = getDisplayWords();
   const colA = document.getElementById("pi-col-a").value.trim() || "Từ vựng / Câu";
   const colB = document.getElementById("pi-col-b").value.trim() || "Dịch";
-  const items = words.map((w, i) => {
-    const word = typeof w==="string"?w:w.word, meaning = typeof w==="object"?(w.meaning||""):"";
-    const text = isWM ? word : (meaning || "—");
-    return { i, text, need: Math.max(MIN_ROW, Math.ceil(text.length / 27) * 21 + 18) };
-  });
-  const AV1 = 810, AVN = 900; // chiều cao còn lại cho các hàng (trang đầu có header lớn)
-  const pages = []; let cur = [], sum = 0, av = AV1;
-  items.forEach(it => {
-    if (cur.length && sum + it.need > av) { pages.push({ rows: cur, sum, av }); cur = []; sum = 0; av = AVN; }
-    cur.push(it); sum += it.need;
-  });
-  if (cur.length) pages.push({ rows: cur, sum, av });
+  const AV1 = 850, AVN = 930; // chiều cao còn lại cho các hàng (trang đầu có header)
+  // thử nén hàng dần để dồn vào ít trang nhất; ít trang bằng nhau thì chọn hàng thoáng nhất
+  let pages = null, items = null;
+  for (const minRow of [60, 52, 46, 40]) {
+    const its = words.map((w, i) => {
+      const word = typeof w==="string"?w:w.word, meaning = typeof w==="object"?(w.meaning||""):"";
+      const text = isWM ? word : (meaning || "—");
+      return { i, text, need: Math.max(minRow, Math.ceil(text.length / 27) * 21 + 18) };
+    });
+    const pg = []; let cur = [], sum = 0, av = AV1;
+    its.forEach(it => {
+      if (cur.length && sum + it.need > av) { pg.push({ rows: cur, sum, av }); cur = []; sum = 0; av = AVN; }
+      cur.push(it); sum += it.need;
+    });
+    if (cur.length) pg.push({ rows: cur, sum, av });
+    if (!pages || pg.length < pages.length) { pages = pg; items = its; }
+    if (pages.length === 1) break;
+  }
   const total = pages.length, n = items.length;
   return pages.map((pg, pi) => {
     const extra = (pg.av - pg.sum) / pg.rows.length;
     const rows = pg.rows.map(it => {
       const h = Math.round(it.need + Math.max(0, Math.min(extra, MAX_ROW - it.need)));
       const lines = h >= 76 ? 2 : 1;
-      return `<tr style="height:${h}px"><td class="num-cell">${it.i+1}</td><td class="word-cell">${escHtml(it.text)}</td><td class="blank-cell"><div class="wl" style="height:${h-12}px">${"<i></i>".repeat(lines)}</div></td></tr>`;
+      return `<tr style="height:${h}px"><td class="num-cell">${it.i+1}</td><td class="word-cell">${escHtml(it.text)}</td><td class="blank-cell"></td></tr>`;
     }).join("");
     const head = pi === 0 ? `
       <div class="ws-heading"><div class="ws-label-sm">English Vocabulary Worksheet</div><div class="ws-title-text">${escHtml(title)}</div></div>
@@ -799,7 +775,7 @@ function buildPages() {
     return head + `
       <div class="ws-tbl-wrap"><table class="ws-tbl">
         <colgroup><col style="width:50px"><col style="width:42%"><col></colgroup>
-        <thead><tr><th class="c">STT</th><th class="c">${escHtml(colA)}</th><th>${escHtml(colB)}</th></tr></thead>
+        <thead><tr><th class="c">STT</th><th class="c">${escHtml(colA)}</th><th class="c">${escHtml(colB)}</th></tr></thead>
         <tbody>${rows}</tbody></table></div>
       <div class="ws-footer-row"><span>${pi === total-1 ? "Score: _______ / " + n : ""}</span></div>`;
   });
